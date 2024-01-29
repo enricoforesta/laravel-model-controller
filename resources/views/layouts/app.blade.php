@@ -8,11 +8,22 @@
     {{-- assets con vite --}}
     @vite('resources/js/app.js')
     {{-- assets con vite --}}
-    <title>Laravel DC</title>
+    <title>Movies</title>
 </head>
 
 <body>
-    <h2 class="text-danger">ciao</h2>
+    @foreach ($movies as $movie)
+        <div class="card my-3" style="width: 50rem;">
+            <div class="card-body">
+                <h3 class="card-title">{{ $movie['id'] }} </h3>
+                <h2 class="card-title">Titolo: {{ $movie['title'] }}</h2>
+                <h3 class="card-title">Titolo originale: {{ $movie['original_title'] }}</h3>
+                <p class="card-text">Nazionalità: {{ $movie['nationality'] }}</p>
+                <p class="card-text">Anno: {{ \Carbon\Carbon::parse($movie['date'])->format('Y') }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    @endforeach
 </body>
 
 </html>
